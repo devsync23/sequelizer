@@ -12,10 +12,23 @@ import {
 const username = "root"
 const password = "root"
 
-const sequelize = new Sequelize('database', username, password, {
+async function testConnection() {
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+}
+
+const sequelize = new Sequelize('test_db', 'root', 'root', {
   host: 'localhost',
-  dialect: 'mysql',
+  dialect: 'mysql'/* one of 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'db2' | 'snowflake' | 'oracle' */
 });
+
+testConnection()
+  .then()
+  .catch(err => console.log(err))
 
 const app = express();
 const PORT = 3000;
@@ -34,19 +47,19 @@ app.route('/employees/:id')
   .put(updateEmployee)
   .delete(fireEmployee);
 
-// /**
-//  * Department Routes
-//  */
-// app.route('/departments')
-//   .get(getEmployee)
-//   .put(updateEmployee);
+/**
+ * Department Routes
+ */
+// app.route('/departments/:id')
+//   .get(getDepartment)
+//   .put(updateDepartment);
 
 // /**
 //  * Project Routes
 //  */
-// app.route('/projects')
-//   .get(getProjects)
-//   .put(updateEmployee);
+// app.route('/projects/:id')
+//   .get(getProject)
+//   .put(updateProject);
 
 
 app.listen(PORT, () => {
