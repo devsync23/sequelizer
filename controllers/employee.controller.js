@@ -1,11 +1,20 @@
-import { Employee } from '../models/employee.model';
 
 export async function getEmployees(req, res) {
-  try {
-    const employees = await Employee.findAll();
-    res.json(employees);
-  } catch (error) {
-    console.error('Error fetching employees:', error);
-    res.status(500).send('Internal Server Error');
-  }
+ res.send({ employees: ['find a way to get the employees from the DB!'] })
+};
+
+export async function getEmployee(req, res) {
+ res.send({ employee: { id: req.params.id } })
+};
+
+export async function createEmployee(req, res) {
+ res.send({ employee: "find a way to create a new employees" })
+};
+
+export async function updateEmployee(req, res) {
+ res.send({ employee: "find a way to update an existing employee with id: " + req.params.id })
+};
+
+export async function fireEmployee(req, res) {
+ res.send({ employee: "find a way to delete an employee" })
 };
