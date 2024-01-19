@@ -1,5 +1,12 @@
+// import { Employee } from '../models/employee.model.js'
 
 export async function getEmployees(req, res) {
+  // const employeeList = Employee.findAll({
+  //   where: {
+  //     authorId: 12,
+  //     status: 'active'
+  //   }
+  // });
   res.send({ employees: ['find a way to get the employees from the DB!'] })
 };
 
