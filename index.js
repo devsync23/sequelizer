@@ -21,7 +21,7 @@ async function testConnection() {
   }
 }
 
-const sequelize = new Sequelize('test_db', 'root', 'root', {
+const sequelize = new Sequelize('test_db', username, password, {
   host: 'localhost',
   dialect: 'mysql'/* one of 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'db2' | 'snowflake' | 'oracle' */
 });
